@@ -7,9 +7,9 @@ function Post(Props) {
     color: 'grey'
   }
   return (
-    <li className="PostItem" style=(postStyle)>
+    <li className="PostItem" style = {postStyle}>
     </li>
-  );
+        );
 }
 
 export default Post;
