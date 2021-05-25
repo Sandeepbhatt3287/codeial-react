@@ -1,11 +1,20 @@
 import React from 'react';
+import axios from 'axios';
+import Post from './Post';
 
 // it will be class based 
-class PostList extends React.Component {
+class PostsList extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = 
+        this.state = {
+            posts:[]
+        }
+        this.getPosts();
+    }
+
+    getPosts(){
+        axios.get('http://localhost:8000/api/v1/posts').then((data)=>{console.log(data)})
     }
 
 render(){
@@ -13,7 +22,9 @@ render(){
         <div>
         <h1>Codeial Posts</h1>
         <ul>
-
+             {
+                 this.state.posts.map((post)=> <Post post={post} key={post._id}></Post>)
+             }
         </ul>
         </div>
           );
@@ -21,4 +32,4 @@ render(){
         }
       }
 
-export default PostList;
+export default PostsList;
